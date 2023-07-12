@@ -1,0 +1,46 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"name":"csharp"},{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Sample - OpenAI - langchain
+
+#!markdown
+
+Read openAiApiKey fron environment variables or from .env file:
+
+#!javascript
+
+#!import ../common-read-env.dib
+console.log(env.computerName);
+
+// #!import ../common-read-env-file.dib
+// console.log(env.key0);
+
+#!javascript
+
+// Importing Langchain library
+langchain = await import('https://esm.sh/langchain@latest');
+
+#!javascript
+
+// Creating a Langchain instance
+const temperature = 0.9;
+const modelName = "gpt-3.5-turbo";
+const maxTokens = 2000;
+
+langchainInstance = new langchain.OpenAI({
+    openAIApiKey: env.openaiApiKey, 
+    temperature: temperature,
+    modelName: modelName,
+    maxTokens: maxTokens,
+ });
+
+#!javascript
+
+// Using Langchain methods
+const res = await langchainInstance.call(
+    "What would be a good company name a company that makes colorful socks?"
+  );
+console.log(res);

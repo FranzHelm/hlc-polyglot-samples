@@ -1,0 +1,28 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Sample 5 - Environment variables
+
+#!csharp
+
+string computerName = Environment.GetEnvironmentVariable("COMPUTERNAME");
+string apiKey = Environment.GetEnvironmentVariable("HOMEDRIVE");
+Console.WriteLine(computerName);
+
+#!javascript
+
+#!set --name computerName --value @csharp:computerName
+#!set --name apiKey --value @csharp:apiKey
+env = {
+    "computerName": computerName,
+    "apiKey": apiKey,
+};
+console.log('env: ', env);
+
+#!javascript
+
+const computerName = env.computerName;
+console.log('computerName: ', computerName);

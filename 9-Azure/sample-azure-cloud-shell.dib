@@ -1,0 +1,23 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"pwsh","items":[{"aliases":[],"languageName":"pwsh","name":"pwsh"}]}}
+
+#!markdown
+
+# Interact with Azure Cloud Shell from PowerShell notebook
+
+## TODO - doesn't work yet
+Error Message: It seems you haven't setup your Azure Cloud Shell account yet. Navigate to https://shell.azure.com to complete account setup.
+
+#!pwsh
+
+Get-Command -Module Microsoft.DotNet.Interactive.PowerShell
+
+#!pwsh
+
+Enter-AzShell
+
+#!markdown
+
+cd Azure:\
+dir

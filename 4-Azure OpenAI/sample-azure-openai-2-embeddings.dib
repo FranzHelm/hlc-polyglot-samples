@@ -1,0 +1,128 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Sample - Azure OpenAI - langchain embeddings
+
+#!javascript
+
+#!import ../common-read-env.dib
+
+#!javascript
+
+// Importing Langchain Embedding library
+// langchain = await import('https://esm.sh/langchain@latest');
+langchainEmbeddings = await import('https://esm.sh/langchain@latest/embeddings');
+
+#!javascript
+
+// Creating a Langchain Embedding instance
+
+const instanceName = "hlc-azure-openai-test-001";
+const deploymentName = "test-text-embedding-ada-002";
+const apiVersion = "2023-05-15";
+
+
+langchainEmbeddingsInstance = new langchainEmbeddings.OpenAIEmbeddings({
+
+    azureOpenAIApiKey: env.azureOpenaiApiKey,
+    azureOpenAIApiInstanceName: instanceName,
+    // azureOpenAIApiDeploymentName: deploymentName,
+    azureOpenAIApiEmbeddingsDeploymentName: deploymentName,
+    azureOpenAIApiVersion: apiVersion,
+
+});
+
+#!javascript
+
+// Using Langchain methods
+
+embeddings = await langchainEmbeddingsInstance.embedQuery("Hello world");
+console.log(embeddings);
+embeddings2 = await langchainEmbeddingsInstance.embedQuery("1500kg + 500kg = 2t");
+console.log(embeddings2);
+
+#!javascript
+
+console.log(`embeddings:  length: ${embeddings.length}, maxValue: ${Math.max(...embeddings)}, minValue: ${Math.min(...embeddings)}`);
+console.log(`embeddings2: length: ${embeddings2.length}, maxValue: ${Math.max(...embeddings2)}, minValue: ${Math.min(...embeddings2)}`);
+
+#!markdown
+
+## Show embeddings values in a diagram
+
+#!javascript
+
+plotlyloader = (require.config({
+    paths: {
+        d3: 'https://cdn.jsdelivr.net/npm/d3@7.4.4/dist/d3.min',
+        jquery: 'https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min',
+        plotly: 'https://cdn.plot.ly/plotly-2.14.0.min'
+    },
+
+    shim: {
+        plotly: {
+            deps: ['d3', 'jquery'],
+            exports: 'plotly'
+        }
+    }
+}) || require);
+
+#!html
+
+<h3>all embeddings (0-1535):</h3>
+<div id="target" style="height:400px"></div>
+<h3>embeddings (930-980):</h3>
+<div id="target2" style="height:400px"></div>
+
+#!javascript
+
+let x2 = [];
+for (let i = 930; i <= 980; i++) {
+  x2.push(i);
+}
+
+plotlyloader(['d3', 'plotly'], function (d3, plotly) {
+  var trace1 = {
+    // x: [1, 2, 3, 4],
+    y: embeddings,
+    name: "emb 1",
+    mode: 'markers',
+    type: 'scatter'
+  };
+
+  var trace2 = {
+    // x: [1, 2, 3, 4],
+    y: embeddings2,
+    name: "emb 2",
+    mode: 'markers',
+    type: 'scatter'
+  };
+  
+  var data = [trace1, trace2];
+  
+  plotly.newPlot('target', data);
+
+
+  var trace3 = {
+      x: x2,
+      y: embeddings.slice(930,980),
+      name: "emb 1",
+      mode: 'markers',
+      type: 'scatter'
+    };
+
+    var trace4 = {
+      x: x2,
+      y: embeddings2.slice(930,980),
+      name: "emb 2",
+      mode: 'markers',
+      type: 'scatter'
+    };
+    
+    var data = [trace3, trace4];
+    
+    plotly.newPlot('target2', data);
+});

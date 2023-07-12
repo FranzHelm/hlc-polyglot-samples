@@ -1,0 +1,31 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Sample4 - Variable Sharing
+## from JS -> C#
+
+#!javascript
+
+x = 17;
+
+#!csharp
+
+#!set --name x --value @javascript:x 
+
+System.Console.WriteLine("x: " + x);
+
+#!markdown
+
+## from C# -> JS
+
+#!csharp
+
+var y=18;
+
+#!javascript
+
+#!set --name y --value @csharp:y
+console.log('y: ' + y);

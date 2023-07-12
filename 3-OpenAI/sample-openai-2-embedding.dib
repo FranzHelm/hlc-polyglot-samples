@@ -1,0 +1,34 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"name":"csharp"},{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Sample - OpenAI - langchain - embeddings
+
+[https://js.langchain.com/docs/modules/models/embeddings/](https://js.langchain.com/docs/modules/models/embeddings/)
+
+#!javascript
+
+#!import ../common-read-env.dib
+
+#!javascript
+
+// Importing Langchain Embedding library
+langchainEmbeddings = await import('https://esm.sh/langchain@latest/embeddings');
+
+#!javascript
+
+// Creating a Langchain instance
+
+
+langchainEmbeddingsInstance = new langchainEmbeddings.OpenAIEmbeddings({
+    openAIApiKey: env.openaiApiKey, 
+});
+
+#!javascript
+
+// Using Langchain methods
+
+embeddings = await langchainEmbeddingsInstance.embedQuery("Hello world");
+console.log(embeddings);

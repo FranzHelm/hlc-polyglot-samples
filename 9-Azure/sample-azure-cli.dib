@@ -1,0 +1,15 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"pwsh","items":[{"aliases":[],"languageName":"pwsh","name":"pwsh"}]}}
+
+#!pwsh
+
+az --version
+
+#!pwsh
+
+az account list --output table
+
+#!pwsh
+
+az group list --output table

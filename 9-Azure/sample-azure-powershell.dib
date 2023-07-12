@@ -1,0 +1,29 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"pwsh","items":[{"aliases":[],"languageName":"pwsh","name":"pwsh"}]}}
+
+#!pwsh
+
+Install-Module Az.Compute,Az.Resources,Az.KeyVault -Force
+
+#!pwsh
+
+Connect-AzAccount
+
+#!pwsh
+
+$myAzSubscription = "My Subscription"
+Set-AzContext -Subscription $myAzSubscription
+
+#!pwsh
+
+$RESOURCE_GROUP_NAME = 'JupyterTest'
+$LOCATION = 'East US 2'
+
+#!pwsh
+
+New-AzResourceGroup -ResourceGroupName $RESOURCE_GROUP_NAME -Location $LOCATION
+
+#!pwsh
+
+Remove-AzResourceGroup -ResourceGroupName $RESOURCE_GROUP_NAME -Force

@@ -1,0 +1,25 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"kql","items":[{"aliases":[],"languageName":"kql","name":"kql"},{"aliases":[],"languageName":"KQL","name":"kql-samples_database"}]}}
+
+#!markdown
+
+# KUSTO KQL
+
+[https://learn.microsoft.com/en-us/azure/data-explorer/query-monitor-data](https://learn.microsoft.com/en-us/azure/data-explorer/query-monitor-data)
+
+Sample from [https://github.com/dotnet/interactive/blob/main/docs/working-with-data.md](https://github.com/dotnet/interactive/blob/main/docs/working-with-data.md):
+
+#!csharp
+
+#r "nuget: Microsoft.DotNet.Interactive.Kql, *-*"
+
+#!csharp
+
+#!connect kql --kernel-name samples_database --cluster "https://help.kusto.windows.net" --database "Samples"
+
+#!kql-samples_database
+
+StormEvents 
+| take 3
+| project StartTime, EndTime, EventType, State, EventNarrative

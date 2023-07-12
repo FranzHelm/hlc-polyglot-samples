@@ -1,0 +1,31 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"name":"csharp"},{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+Reading environment variables
+
+#!csharp
+
+// In PowerShell set environment variables permanent:
+// Setx ENV_POLYGLOT__OPENAI_API_KEY "sk-..."
+// Setx ENV_POLYGLOT__AZURE_OPENAI_API_KEY "07..."
+
+string computerName = Environment.GetEnvironmentVariable("COMPUTERNAME");
+string openaiApiKey = Environment.GetEnvironmentVariable("ENV_POLYGLOT__OPENAI_API_KEY");
+string azureOpenaiApiKey = Environment.GetEnvironmentVariable("ENV_POLYGLOT__AZURE_OPENAI_API_KEY");
+
+object env = new {
+    computerName = computerName,
+    openaiApiKey = openaiApiKey,
+    azureOpenaiApiKey = azureOpenaiApiKey
+};
+
+#!javascript
+
+#!set --name env --value @csharp:env
+
+#!markdown
+
+done

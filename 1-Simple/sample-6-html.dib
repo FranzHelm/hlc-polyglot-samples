@@ -1,0 +1,74 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"name":"csharp"},{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Simple HTML/CSS + JavaScript
+
+#!html
+
+<div class="test"> 
+    <input type="text" id="myInput" placeholder="Enter text">
+    <button id="myButton">Click me</button>
+    <p>Output:</p>
+    <div id="myOutput"></div>
+</div>
+
+#!javascript
+
+// Get references to the input field and button
+const inputField = document.getElementById('myInput');
+const button = document.getElementById('myButton');
+const outputDiv = document.getElementById('myOutput');
+
+// Add an event listener to the button
+button.addEventListener('click', () => {
+  // Read the value from the input field
+  inputValue = inputField.value;
+  // Add input value to output
+  outputDiv.textContent += inputValue;
+});
+
+#!html
+
+<style>
+  .test {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f5f5f5;
+    color: gray;
+  }
+
+  input[type="text"] {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+
+  p {
+    margin-top: 20px;
+    font-size: 16px;
+  }
+
+  #myOutput {
+    padding: 10px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+</style>

@@ -1,0 +1,43 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"name":"csharp"},{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Raw Value Storage - Using
+
+#!javascript
+
+#!value --name someJson
+    
+{ 
+    "what": "some JSON", 
+    "why": "to share it with another subkernel"
+}
+
+#!csharp
+
+#!share someJson --from value
+    
+using Newtonsoft.Json.Linq;
+var jObject = JObject.Parse(someJson);
+jObject.ToString()
+
+#!markdown
+
+# Raw Value Storage - From file
+
+#!value
+
+#!value --from-file ./data.json --name dataJson
+
+#!csharp
+
+#!share dataJson --from value
+dataJson
+
+#!javascript
+
+#!share dataJson --from value
+data = JSON.parse(dataJson);
+console.log(data.key1);

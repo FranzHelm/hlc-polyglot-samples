@@ -1,0 +1,31 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"name":"csharp"},{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Reading .env file
+
+#!markdown
+
+The file `.env` contains your secrets. You have to create this file first, with following content:
+
+        {
+            "key0": "value0 - ok",
+            "openaiApiKey" : "sk-123...",
+            "azureOpenaiApiKey" : "456..."
+        }
+
+#!value
+
+#!value --from-file E:\Sourcecode\hlc\hlc-polyglot-samples\.env --name envJson
+
+#!javascript
+
+#!share envJson --from value
+env = JSON.parse(envJson);
+// console.log(env.key0);
+
+#!markdown
+
+done

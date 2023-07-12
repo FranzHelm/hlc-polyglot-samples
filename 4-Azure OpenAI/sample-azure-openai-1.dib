@@ -1,0 +1,49 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"javascript","items":[{"aliases":[],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Sample - Azure OpenAI - langchain
+
+[https://js.langchain.com/docs/modules/models/llms/integrations](https://js.langchain.com/docs/modules/models/llms/integrations)
+
+#!javascript
+
+#!import ../common-read-env.dib
+
+#!javascript
+
+// Importing Langchain library
+langchain = await import('https://esm.sh/langchain@latest');
+langchainEmbeddings = await import('https://esm.sh/langchain@0.0.105/embeddings');
+
+#!javascript
+
+// Creating a Langchain instance
+
+const instanceName = "hlc-azure-openai-test-001";
+const deploymentName = "test-gpt-35-turbo";
+const apiVersion = "2023-05-15";
+
+const temperature = 0.9;
+const maxTokens = 2000;
+
+langchainInstance = new langchain.OpenAI({
+
+    azureOpenAIApiKey: env.azureOpenaiApiKey,
+    azureOpenAIApiInstanceName: instanceName,
+    azureOpenAIApiDeploymentName: deploymentName,
+    azureOpenAIApiVersion: apiVersion,
+
+    temperature: temperature,
+    maxTokens: maxTokens,
+});
+
+#!javascript
+
+// Using Langchain methods
+const res = await langchainInstance.call(
+    "What would be a good company name a company that makes colorful socks?"
+  );
+console.log(res);

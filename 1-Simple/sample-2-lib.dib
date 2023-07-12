@@ -1,0 +1,35 @@
+#!meta
+
+{"kernelInfo":{"defaultKernelName":"csharp","items":[{"aliases":[],"name":"csharp"},{"aliases":["js"],"languageName":"javascript","name":"javascript"}]}}
+
+#!markdown
+
+# Sample 2 - Library import as EcmaScript module
+
+#!markdown
+
+## Import Lodash - doesn't work
+
+#!javascript
+
+// lodashKebabcase = await import("https://cdn.jsdelivr.net/npm/lodash.kebabcase@4.1.1/+esm");
+// _ = await import("https://cdn.jsdelivr.net/npm/lodash/+esm");
+// lodash = await import('https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js');
+lodash = await import('https://esm.sh/lodash@latest/+esm');
+
+console.log(lodash);
+
+const input = "Gurke Tomate Zwiebel";
+kC = lodash.kebabCase(input);
+console.log(kC);
+
+#!markdown
+
+## Library Uuid - ECMAScript module import
+
+#!javascript
+
+uuid = await import("https://cdn.jsdelivr.net/npm/uuid@latest/+esm");
+
+const id = uuid.v4();
+console.log(id);
