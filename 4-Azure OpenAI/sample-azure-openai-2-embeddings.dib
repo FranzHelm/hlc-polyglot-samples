@@ -4,7 +4,7 @@
 
 #!markdown
 
-# Sample - Azure OpenAI - langchain embeddings
+# Sample - Azure OpenAI service - LangChain embeddings
 
 #!javascript
 
@@ -41,7 +41,7 @@ langchainEmbeddingsInstance = new langchainEmbeddings.OpenAIEmbeddings({
 
 embeddings = await langchainEmbeddingsInstance.embedQuery("Hello world");
 console.log(embeddings);
-embeddings2 = await langchainEmbeddingsInstance.embedQuery("1500kg + 500kg = 2t");
+embeddings2 = await langchainEmbeddingsInstance.embedQuery("Hello Erde");
 console.log(embeddings2);
 
 #!javascript

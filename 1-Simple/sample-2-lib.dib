@@ -13,7 +13,7 @@
 #!javascript
 
 // lodashKebabcase = await import("https://cdn.jsdelivr.net/npm/lodash.kebabcase@4.1.1/+esm");
-// _ = await import("https://cdn.jsdelivr.net/npm/lodash/+esm");
+// lodash = await import("https://cdn.jsdelivr.net/npm/lodash/+esm");
 // lodash = await import('https://cdn.jsdelivr.net/npm/lodash@4.17.21/lodash.min.js');
 lodash = await import('https://esm.sh/lodash@latest/+esm');
 
